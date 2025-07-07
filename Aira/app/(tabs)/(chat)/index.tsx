@@ -2,7 +2,8 @@ import { View, Text, TouchableOpacity, StyleSheet,Image,ImageSourcePropType} fro
 import { useRouter } from 'expo-router';
 import * as Notifications from 'expo-notifications';
 import { initializeNotifications } from '../../../utils/lib'
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useStreakStore } from '@/utils/streakStore'; // Adjust path
 import Animated, {
   FadeIn,
   LinearTransition,
@@ -78,6 +79,14 @@ const HeadText = (props: HeadTextProps) => {
 export default function Index() {
   const { top, bottom } = useSafeAreaInsets();
   const router = useRouter();
+  const { updateStreak, lastOpenedDate } = useStreakStore();
+
+  useEffect(() => {
+    const today = new Date().toDateString();
+    if (lastOpenedDate !== today) {
+      updateStreak(); // Only update if new day
+    }
+  }, []);
 
   // Uncomment the following lines to schedule a notification
   // const[title,setTitle] = useState('');
