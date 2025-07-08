@@ -6,7 +6,7 @@ import { useAuthStore } from '../utils/authStore';
 import { API_URL } from '../utils/apiConfig';
 import { useRouter,useNavigation } from 'expo-router';
 
-export default function Chat() {
+const GiftChat=()=> {
   const { token } = useAuthStore();
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,7 +20,7 @@ export default function Chat() {
 
   useEffect(() => {
     fetchMessages();
-    // sendWelcomeBackMessage();
+    sendWelcomeBackMessage();
   }, []);
 
   const fetchMessages = async () => {
@@ -165,6 +165,10 @@ export default function Chat() {
         renderInputToolbar={(props) => (
           <InputToolbar {...props} containerStyle={styles.inputToolbar} />
         )}
+        
+
+        renderAvatar={() => null}
+showAvatarForEveryMessage={true}
 
         
     
@@ -188,6 +192,7 @@ export default function Chat() {
     </View>
   );
 }
+export default GiftChat;
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F9FAFB' },

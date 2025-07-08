@@ -6,7 +6,7 @@ import { API_URL } from '@/utils/apiConfig';
 import { useAuthStore } from '@/utils/authStore'; // Ensure this path is correct
 
 export default function Vision() {
-  const [words, setWords] = useState([]);
+  const [words, setWords] = useState([{name:'one',value:'3'},{name:'two',value:'3'}]);
   const [modalVisible, setModalVisible] = useState(false);
   const { token } = useAuthStore();
   const [newWord, setNewWord] = useState('');
@@ -170,20 +170,27 @@ export default function Vision() {
   
           {/* Word Cloud */}
           <View style={styles.wordCloudContainer}>
-            <WordCloud
-              key={words.length}
-              options={{
-                words: words,
-                verticalEnabled: true,
-                minFont: 10,
-                maxFont: 50,
-                fontOffset: 1,
-                width: 350,
-                height: 700,
-                fontFamily: 'Arial',
-              }}
-              onWordPress={handleWordClick}
-            />
+          {words.length > 0 ? (
+  <WordCloud
+    key={words.length}
+    options={{
+      words: words,
+      verticalEnabled: true,
+      minFont: 10,
+      maxFont: 50,
+      fontOffset: 1,
+      width: 350,
+      height: 700,
+      fontFamily: 'Arial',
+    }}
+    onWordPress={handleWordClick}
+  />
+) : (
+  <Text style={{ color: '#666', fontSize: 16, textAlign: 'center' }}>
+    No goals yet. Tap "+" to add your first one!
+  </Text>
+)}
+
           </View>
   
           {/* Floating Action Button */}

@@ -12,6 +12,7 @@ const SignIn = () => {
   const handleLogin = async () => {
     if (!email || !password) {
       Alert.alert('Error', 'Please fill all fields');
+      console.log('Email or password is empty');
       return;
     }
 

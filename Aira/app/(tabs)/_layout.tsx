@@ -34,7 +34,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="voiceChat"
+        name="VoiceChat"
         options={{
           title: 'Call',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="chevron.right" color={color} />,

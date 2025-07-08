@@ -2,8 +2,7 @@ import { Link,} from 'expo-router';
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
-
-const API_URL="http://192.168.165.13:5000/api"
+import { API_URL } from '../utils/apiConfig';
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -73,6 +72,7 @@ const SignUp = () => {
           placeholder="Password"
           secureTextEntry
           placeholderTextColor="#888"
+          tex
           onChangeText={(text) => handleChange('password', text)}
         />
 
@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     fontSize: 16,
     backgroundColor: '#fff',
+    color: '#333',
     marginBottom: 20,
   },
   button: {

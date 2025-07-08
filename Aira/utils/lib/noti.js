@@ -1,6 +1,11 @@
 import * as Notifications from 'expo-notifications';
+import { Platform } from 'react-native';
 
 export const scheduleGoodEveningNotification = async () => {
+  if (Platform.OS === 'web') {
+    console.log('Notifications not supported on web');
+    return;
+  }
   await Notifications.scheduleNotificationAsync({
     content: {
       title: 'Good Afternoon!',

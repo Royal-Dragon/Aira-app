@@ -14,7 +14,7 @@ if (typeof global.Buffer === 'undefined') {
  
 
 
-const VoiceChat = () => {
+export default function Voicechat  () {
   const [recording, setRecording] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
@@ -66,10 +66,7 @@ const [isPlaying, setIsPlaying] = useState(false);
     }
   }, [isFetching, rotation]);
 
-  const rotateInterpolate = rotation.interpolate({
-    inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
-  });
+
 
   // Start recording
   const startRecording = async () => {
@@ -177,8 +174,6 @@ const saveAndPlayAudio = async (arrayBuffer) => {
     stopPulsing();
   }
 };
-
-
   useEffect(() => {
     return sound ? () => { sound.unloadAsync(); } : undefined;
   }, [sound]);
@@ -210,7 +205,6 @@ const saveAndPlayAudio = async (arrayBuffer) => {
   );
 };
 
-export default VoiceChat;
 
 const styles = StyleSheet.create({
   container: {
@@ -254,3 +248,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+

@@ -11,6 +11,7 @@ import { useAuthStore } from '@/utils/authStore';
 
 export default function RootLayout() {
   const {isLoggedin,shouldCreateAccount, isAssessed} = useAuthStore()
+  
   const colorScheme = useColorScheme();
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),

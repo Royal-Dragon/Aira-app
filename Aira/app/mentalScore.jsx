@@ -115,9 +115,9 @@ export default function MentalScore() {
   const latestEntry = scores[scores.length - 1];
   const router = useRouter();
   const cards = [
-    { title: 'Supporting Text', content: latestEntry.supporting_text.join('\n\n') },
     { title: 'Suggestions', content: latestEntry.suggestions.join('\n\n') },
     { title: 'Reflection', content: latestEntry.reflection_text },
+    { title: 'Supporting Text', content: latestEntry.supporting_text.join('\n\n') },
   ];
 
   return (

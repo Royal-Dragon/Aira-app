@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet,Image,ImageSourcePropType} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { useRouter } from 'expo-router';
-import * as Notifications from 'expo-notifications';
 import { initializeNotifications } from '../../../utils/lib'
 import React, { useState,useEffect } from 'react';
 import { useStreakStore } from '@/utils/streakStore'; // Adjust path
@@ -79,6 +79,7 @@ const HeadText = (props: HeadTextProps) => {
 export default function Index() {
   const { top, bottom } = useSafeAreaInsets();
   const router = useRouter();
+  const navigation = useNavigation(); 
   const { updateStreak, lastOpenedDate } = useStreakStore();
 
   useEffect(() => {
@@ -110,14 +111,14 @@ export default function Index() {
   return (
     <View style={[styles.container, { paddingTop: top, paddingBottom: bottom }]}>
       <HeadText text="Welcome to" side="left" size={50} image={require('../../../assets/images/one.jpg')} />
-      <HeadText text="Aira Chat" side="right"size={50} image={require('../../../assets/images/two.jpg')} />
-      <HeadText text="Click" side="left" size={50} image={require('../../../assets/images/three.jpg')} />
+      <HeadText text="Aira Chat" side="right"size={50} image={require('../../../assets/images/two.png')} />
+      <HeadText text="Click" side="left" size={50} image={require('../../../assets/images/five.png')} />
   
-      <TouchableOpacity style={styles.button} onPress={() => router.push('/GiftedChat')}>
+      <TouchableOpacity style={styles.button} onPress={() => router.push('GiftChat')}>
       <HeadText text="to begin ✨" color='#fff' size={50} /> 
       </TouchableOpacity>
       
-      <HeadText side="right" image={require('../../../assets/images/four.jpg')} />
+      <HeadText side="right" image={require('../../../assets/images/four.png')} />
 
     </View>
   );
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    resizeMode: 'cover',
+    resizeMode:'cover',
   },
   button: {
     backgroundColor: '#4F46E5',
